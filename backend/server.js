@@ -20,6 +20,11 @@ app.use("/api/request", requestRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/services", serviceRoutes);
 
+// Also mount routes at root for simpler production URLs
+app.use("/request", requestRoutes);
+app.use("/auth", authRoutes);
+app.use("/services", serviceRoutes);
+
 app.get("/", (req, res) => {
   res.json({ message: "Barbershop API is running..." });
 });

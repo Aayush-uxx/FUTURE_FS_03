@@ -11,7 +11,7 @@ const SERVICE_LABELS: Record<string, string> = {
   beard: 'Beard Styling',
   combo: 'Haircut + Beard Combo',
   shave: 'Hot Towel Shave',
-};
+}; 
 
 interface Request {
   _id: string;
