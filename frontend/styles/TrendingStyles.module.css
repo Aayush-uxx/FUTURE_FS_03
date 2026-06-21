@@ -1,0 +1,161 @@
+.section {
+  padding: 5rem 0;
+  background: var(--color-bg);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+  padding: 0.3rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--color-border);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--color-bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(123, 126, 232, 0.07);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--color-border-light);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(123, 126, 232, 0.15);
+  border-color: var(--color-border);
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.category {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(28, 26, 78, 0.82);
+  color: var(--color-primary-light);
+  padding: 0.3rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+}
+
+.cardContent {
+  padding: 1.5rem;
+}
+
+.styleName {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 0.25rem;
+}
+
+.styleDescription {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.cardMeta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.price {
+  color: var(--color-primary);
+}
+
+.duration {
+  color: var(--color-text-muted);
+}
+
+.bookBtn {
+  display: block;
+  text-align: center;
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.bookBtn:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(123, 126, 232, 0.35);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}

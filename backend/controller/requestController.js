@@ -67,9 +67,6 @@ const getMyRequests = async (req, res) => {
     const requests = await Request.find({ userEmail: userEmail }).sort({
       createdAt: -1,
     });
-    if (!requests || requests.length === 0) {
-      return res.status(404).json({ message: "No requests found!" });
-    }
     res.status(200).json({
       success: true,
       count: requests.length,
@@ -204,7 +201,7 @@ const updateRequestStatus = async (req, res) => {
   try {
     const { id } = req.params;
     const { status, adminNote } = req.body;
-    const validStatuses = ["approved", "rejected"];
+    const validStatuses = ["approved", "rejected", "completed"];
     if (!validStatuses.includes(status)) {
       return res
         .status(400)

@@ -1,0 +1,276 @@
+.navbar {
+  background: var(--color-dark);
+  color: #ffffff;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(28, 26, 78, 0.3);
+  border-bottom: 1px solid rgba(123, 126, 232, 0.15);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.logoIcon {
+  font-size: 2rem;
+}
+
+.logoText {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navLink {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--color-primary-light);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.navLink.active {
+  color: var(--color-primary-light);
+}
+
+.navLink.active::after {
+  width: 100%;
+}
+
+.authSection {
+  display: flex;
+  align-items: center;
+}
+
+.loginButton {
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.loginButton:hover {
+  background: var(--color-primary-dark);
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(123, 126, 232, 0.35);
+}
+
+.userDropdown {
+  position: relative;
+}
+
+.userButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  transition: background 0.3s;
+}
+
+.userButton:hover {
+  background: rgba(123, 126, 232, 0.15);
+}
+
+.userIcon {
+  font-size: 1.5rem;
+}
+
+.userName {
+  font-weight: 500;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: var(--color-dark-2);
+  border-radius: 12px;
+  padding: 0.5rem;
+  min-width: 200px;
+  box-shadow: 0 10px 40px rgba(28, 26, 78, 0.4);
+  border: 1px solid rgba(123, 126, 232, 0.2);
+  animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownItem {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.dropdownItem:hover {
+  background: rgba(123, 126, 232, 0.2);
+  color: #ffffff;
+}
+
+.dropdownItemLogout {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  color: #ff8a8a;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: left;
+  transition: background 0.3s;
+}
+
+.dropdownItemLogout:hover {
+  background: rgba(255, 107, 107, 0.15);
+}
+
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.mobileMenu {
+  display: none;
+  padding: 1rem 2rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(123, 126, 232, 0.15);
+}
+
+.mobileNavLink {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.mobileNavLink:hover {
+  background: rgba(123, 126, 232, 0.15);
+  color: #ffffff;
+}
+
+.mobileNavLink.active {
+  color: var(--color-primary-light);
+  background: rgba(123, 126, 232, 0.12);
+}
+
+.mobileLoginButton {
+  display: block;
+  text-align: center;
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.mobileLogoutButton {
+  background: rgba(255, 107, 107, 0.15);
+  color: #ff8a8a;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .authSection {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: block;
+  }
+
+  .mobileMenu {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobileMenu {
+    display: none !important;
+  }
+}

@@ -1,0 +1,413 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-bg);
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-dark);
+}
+
+.tabNav {
+  display: flex;
+  background: var(--color-bg-muted);
+  padding: 0.35rem;
+  border-radius: 12px;
+  gap: 0.25rem;
+}
+
+.tabBtn {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.activeTab {
+  background: white;
+  color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(123, 126, 232, 0.15);
+}
+
+.loading {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background: var(--color-bg-card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(123, 126, 232, 0.07);
+  border: 1px solid var(--color-border-light);
+}
+
+.statNumber {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-dark);
+  display: block;
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.statPending .statNumber { color: var(--color-warning-text); }
+.statApproved .statNumber { color: var(--color-success-text); }
+.statCompleted .statNumber { color: var(--color-primary); }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--color-bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(123, 126, 232, 0.07);
+  border: 1px solid var(--color-border-light);
+}
+
+.cardHeader {
+  padding: 1.25rem 1.5rem;
+  background: var(--color-bg-light);
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.userInfo h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.userEmail, .userPhone {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.statusBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.statusPending { background: var(--color-warning-bg); color: var(--color-warning-text); }
+.statusApproved { background: var(--color-success-bg); color: var(--color-success-text); }
+.statusRejected { background: var(--color-error-bg); color: var(--color-error-text); }
+.statusCompleted { background: var(--color-info-bg); color: var(--color-info-text); }
+
+.cardBody {
+  padding: 1.5rem;
+}
+
+.bookingDetails {
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.serviceTag {
+  background: var(--color-primary-pale);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-border);
+  font-weight: 600;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.detailGrid div span:last-child {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.adminNote {
+  background: var(--color-bg-muted);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  border: 1px solid var(--color-border-light);
+}
+
+.adminNote span:last-child {
+  font-style: italic;
+  color: var(--color-warning-text);
+}
+
+.adminActions {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.manageBtn {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.completeBtn {
+  background: var(--color-accent-blue);
+  color: var(--color-dark);
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.noteInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  background: var(--color-bg-light);
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.approveBtn { background: #28a745; color: white; padding: 0.6rem 1.5rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+.rejectBtn { background: #dc3545; color: white; padding: 0.6rem 1.5rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+.cancelBtn { background: #e2e3e5; color: #383d41; padding: 0.6rem 1.5rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+
+/* Services Tab */
+.servicesSection {
+  background: var(--color-bg-card);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(123, 126, 232, 0.07);
+  border: 1px solid var(--color-border-light);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.addServiceBtn {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.serviceList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.serviceCard {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: var(--color-bg-light);
+  border-radius: 12px;
+  border: 1px solid var(--color-border-light);
+  gap: 1rem;
+}
+
+.smallServiceImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.serviceInfo {
+  flex-grow: 1;
+}
+
+.serviceInfo h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.categoryBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: var(--color-primary-pale);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.servicePrice {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+.serviceActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.editIconBtn, .deleteIconBtn {
+  background: white;
+  border: 1px solid var(--color-border);
+  padding: 0.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.editIconBtn:hover { background: var(--color-primary-pale); }
+.deleteIconBtn:hover { background: var(--color-error-bg); }
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 26, 78, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.serviceForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.formGroup label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.formGroup input, .formGroup select, .formGroup textarea {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg-light);
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modalActions .submitBtn { flex-grow: 2; }
+.modalActions .cancelBtn { flex-grow: 1; }
+
+@media (max-width: 768px) {
+  .header { flex-direction: column; align-items: stretch; }
+  .tabNav { width: 100%; }
+  .tabBtn { flex: 1; }
+  .formRow { grid-template-columns: 1fr; }
+}

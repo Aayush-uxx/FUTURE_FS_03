@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import { AuthProvider } from "@/context/AuthContext";
+import ConditionalNavbar from "@/components/ConditionalNavbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Precision Cuts Barbershop",
-  description: "Downtown's Best Barber Since 2015",
+  title: "Precision Cuts | Premium Barbershop",
+  description: "Downtown Kathmandu's premier barbershop experience",
 };
 
 export default function RootLayout({
@@ -26,8 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Navbar />
-        <main>{children}</main>
+        <AuthProvider>
+          <ConditionalNavbar />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

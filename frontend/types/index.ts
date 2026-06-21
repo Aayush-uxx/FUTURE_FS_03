@@ -3,13 +3,13 @@ export interface User {
     name: string;
     email: string;
     role: 'user' | 'admin';
-    phone?: string;
+    phone: string;
   }
   
   export interface Service {
     _id: string;
     name: string;
-    category: 'haircut' | 'beard' | 'shave' | 'massage';
+    category: 'haircut' | 'beard' | 'massage' | 'color' | 'style' | 'other';
     price: number;
     duration: number;
     image: string;
@@ -18,7 +18,7 @@ export interface User {
   
   export interface Booking {
     _id: string;
-    userId: string;
+    userId: string | { name: string; email: string; phone: string };
     services: Service[];
     totalPrice: number;
     totalDuration: number;

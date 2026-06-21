@@ -1,70 +1,117 @@
-'use client';  // ← TEACHING: Client Component because we use useState
+'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
+import styles from '@/styles/Navbar.module.css';
 
 export default function Navbar() {
-  // TEACHING: State for mobile menu toggle
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // TEACHING: State for user email (for dashboard)
-  const [userEmail, setUserEmail] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const pathname = usePathname();
+  const { user, logout } = useAuth();
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (userEmail) {
-      // TEACHING: Store email in localStorage (persists across pages)
-      localStorage.setItem('userEmail', userEmail);
-      alert(`✅ Email set: ${userEmail}`);
-    }
-  };
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
+  }, [pathname]);
+
+  const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/book', label: 'Book' },
+    { href: '/contact', label: 'Contact' },
+  ];
 
   return (
-    <nav className="navbar">
-      <div className="container">
-        <div className="nav-inner">
-          {/* Logo */}
-          <Link href="/" className="nav-brand">
-            ✂️ Precision Cuts
-          </Link>
+    <nav className={styles.navbar}>
+      <div className={styles.container}>
+        <Link href="/" className={styles.logo}>
+          <span className={styles.logoIcon}>✂️</span>
+          <span className={styles.logoText}>Precision Cuts</span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="nav-links">
-            <Link href="/">Home</Link>
-            <Link href="/book">Book</Link>
-            <Link href="/dashboard">My Requests</Link>
-            <Link href="/admin" className="admin-link">Admin</Link>
-          </div>
-
-          {/* Email Input (Desktop) */}
-          <form onSubmit={handleEmailSubmit} className="nav-email">
-            <input
-              type="email"
-              placeholder="Enter email"
-              value={userEmail}
-              onChange={(e) => setUserEmail(e.target.value)}
-            />
-            <button type="submit">Set</button>
-          </form>
-
-          {/* Mobile Menu Button */}
-          <button 
-            className="mobile-menu-btn"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            ☰
-          </button>
+        <div className={styles.navLinks}>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`${styles.navLink} ${pathname === link.href ? styles.active : ''}`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="mobile-menu">
-            <Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
-            <Link href="/book" onClick={() => setIsMenuOpen(false)}>Book</Link>
-            <Link href="/dashboard" onClick={() => setIsMenuOpen(false)}>My Requests</Link>
-            <Link href="/admin" onClick={() => setIsMenuOpen(false)}>Admin</Link>
-          </div>
-        )}
+        <div className={styles.authSection}>
+          {user ? (
+            <div className={styles.userDropdown}>
+              <button
+                className={styles.userButton}
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                <span className={styles.userIcon}>👤</span>
+                <span className={styles.userName}>{user.name}</span>
+              </button>
+
+              {isDropdownOpen && (
+                <div className={styles.dropdownMenu}>
+                  {user.role === 'admin' ? (
+                    <Link href="/admin" className={styles.dropdownItem}>
+                      Admin Dashboard
+                    </Link>
+                  ) : (
+                    <Link href="/dashboard" className={styles.dropdownItem}>
+                      My Bookings
+                    </Link>
+                  )}
+                  <button onClick={logout} className={styles.dropdownItemLogout}>
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link href="/login" className={styles.loginButton}>
+              Login
+            </Link>
+          )}
+        </div>
+
+        <button
+          className={styles.mobileMenuButton}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? '✕' : '☰'}
+        </button>
       </div>
+
+      {isMenuOpen && (
+        <div className={styles.mobileMenu}>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`${styles.mobileNavLink} ${pathname === link.href ? styles.active : ''}`}
+            >
+              {link.label}
+            </Link>
+          ))}
+          {user ? (
+            <>
+              {user.role === 'admin' ? (
+                <Link href="/admin" className={styles.mobileNavLink}>Admin Dashboard</Link>
+              ) : (
+                <Link href="/dashboard" className={styles.mobileNavLink}>My Bookings</Link>
+              )}
+              <button onClick={logout} className={styles.mobileLogoutButton}>Logout</button>
+            </>
+          ) : (
+            <Link href="/login" className={styles.mobileLoginButton}>Login</Link>
+          )}
+        </div>
+      )}
     </nav>
   );
 }

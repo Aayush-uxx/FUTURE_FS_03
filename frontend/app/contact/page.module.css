@@ -1,0 +1,203 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--color-dark), var(--color-dark-2));
+  color: #ffffff;
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(123, 126, 232, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  padding: 4rem 0;
+}
+
+.info h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 0.75rem;
+}
+
+.info .description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.contactItems {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contactItem {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.contactItem .icon {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-top: 0.2rem;
+  min-width: 32px;
+}
+
+.contactItem h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.15rem;
+}
+
+.contactItem p {
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.contactItem a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contactItem a:hover {
+  color: var(--color-primary);
+}
+
+.timezone {
+  font-size: 0.8rem !important;
+  color: var(--color-text-faint) !important;
+}
+
+.mapContainer {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(123, 126, 232, 0.1);
+  border: 1px solid var(--color-border-light);
+}
+
+.mapContainer iframe {
+  display: block;
+}
+
+.mapOverlay {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  pointer-events: none;
+}
+
+.pin {
+  font-size: 2.5rem;
+  animation: bounce 2s infinite;
+}
+
+.pinLabel {
+  background: rgba(28, 26, 78, 0.85);
+  color: #ffffff;
+  padding: 0.3rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .info h2 {
+    font-size: 1.8rem;
+  }
+
+  .mapContainer iframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 3rem 1.5rem;
+  }
+
+  .grid {
+    padding: 2rem 0;
+  }
+
+  .mapContainer iframe {
+    height: 250px;
+  }
+
+  .pin {
+    font-size: 2rem;
+  }
+
+  .pinLabel {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.8rem;
+  }
+}
