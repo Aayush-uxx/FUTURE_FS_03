@@ -6,13 +6,21 @@ import requestRoutes from "./routes/requestRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import serviceRoutes from "./routes/serviceRoutes.js";
 dotenv.config();
-// Connect to Database
-dbCon();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+// Middleware to ensure DB is connected
+app.use(async (req, res, next) => {
+  try {
+    await dbCon();
+    next();
+  } catch (error) {
+    res.status(500).json({ error: "Database connection failed" });
+  }
+});
 
 const port = process.env.PORT || 5000;
 
