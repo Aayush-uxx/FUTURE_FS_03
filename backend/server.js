@@ -20,6 +20,10 @@ app.use("/api/request", requestRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/services", serviceRoutes);
 
+app.get("/", (req, res) => {
+  res.json({ message: "Barbershop API is running..." });
+});
+
 // Only listen if not running as a serverless function
 if (process.env.NODE_ENV !== 'production') {
     app.listen(port, () => {
